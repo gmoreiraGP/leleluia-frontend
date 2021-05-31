@@ -1,7 +1,10 @@
+import Layout from "../components/Layout"
+
 const Index = () => {
+
   return (
     <div>
-      <h1>Develop Panel</h1>
+      <Layout />
     </div>
   )
 }
