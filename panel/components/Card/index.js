@@ -1,23 +1,49 @@
-const Card = ({ children }) => {
-    return (
-        <div className="w-full px-6 sm:w-1/2 xl:w-1/3">
-            <div className="flex items-center px-5 py-6 shadow-sm rounded-md bg-white">
-                {children}
-            </div>
-        </div>
-    )
+import tw from 'tailwind-styled-components'
+
+const Wrapper = tw.div`
+    w-full 
+    px-6 
+    sm:w-1/2 
+    xl:w-1/3
+`
+const CardStyled = tw.div`
+    flex 
+    items-center 
+    px-5 
+    py-6 
+    shadow-sm 
+    rounded-md 
+    bg-white
+`
+const CardIcon = tw.div`
+    p-3 
+    rounded-full 
+    bg-indigo-600 
+    bg-opacity-75
+`
+const CardInfo = tw.div`
+    mx-5
+`
+
+const CardTitle = tw.h4`
+    text-2xl
+    font-semibold
+    text-gray-700
+`
+const CardDescription = tw.p`
+    text-gray-500
+`
+
+const Card = () => {
+  return (
+    <Wrapper>
+      <CardStyled>
+        <CardIcon>icon</CardIcon>
+        <CardTitle>Title</CardTitle>
+        <CardDescription>Description</CardDescription>
+      </CardStyled>
+    </Wrapper>
+  )
 }
-const CardIcon = ({ children }) => <div className="p-3 rounded-full bg-indigo-600 bg-opacity-75">{children}</div>
-
-const CardInfo = ({ children }) => <div className="mx-5">{children}</div>
-
-const CardTitle = ({ children }) => <h4 className="text-2xl font-semibold text-gray-700">{children}</h4>
-
-const CardDescription = ({ children }) => <div className="text-gray-500">{children}</div>
-
-Card.Icon = CardIcon
-Card.Info = CardInfo
-Card.Title = CardTitle
-Card.Description = CardDescription
 
 export default Card
