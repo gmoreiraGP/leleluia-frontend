@@ -1,11 +1,8 @@
 import { useState } from 'react'
 import tw from 'tailwind-styled-components'
-import { SidebarContext } from '../../context/SidebarContext'
 
 const Wrapper = tw.header`
     relative
-    flex
-    justify-center
     p-3
     w-full
     bg-secondary-200
@@ -27,6 +24,7 @@ const ProfileAvatar = tw.button`
     overflow-hidden
     shadow
     focus:outline-none
+    float-right
 `
 
 const ProfileImage = tw.img`
@@ -83,7 +81,7 @@ const Header = ({ sidebarOpen, sidebarToggle }) => {
         </NavWrapperIcon>
       )}
 
-      <ProfileAvatar onClick={dropDownToggle} className=''>
+      <ProfileAvatar onClick={dropDownToggle}>
         <ProfileImage
           src='https://images.unsplash.com/photo-1528892952291-009c663ce843?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=296&amp;q=80'
           alt='Your avatar'
