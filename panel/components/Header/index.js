@@ -1,11 +1,11 @@
-import { useState, useContext } from 'react'
+import { useState } from 'react'
 import tw from 'tailwind-styled-components'
 import { SidebarContext } from '../../context/SidebarContext'
 
 const Wrapper = tw.header`
     relative
     flex
-    justify-around
+    justify-center
     p-3
     w-full
     bg-secondary-200
@@ -60,18 +60,17 @@ const ProfileItem = tw.a`
     hover:text-white
 `
 
-const Header = () => {
-  const { open, sidebarOpen } = useContext(SidebarContext)
+const Header = ({ sidebarOpen, sidebarToggle }) => {
   const [dropDownOpen, setDropdownOpen] = useState(false)
   const dropDownToggle = () => setDropdownOpen(old => !old)
 
   return (
     <Wrapper>
       {!sidebarOpen && (
-        <NavWrapperIcon onClick={() => open(sidebarOpen)}>
+        <NavWrapperIcon onClick={sidebarToggle}>
           <svg
             xmlns='http://www.w3.org/2000/svg'
-            className='h-5 w-5 fill-primary-500'
+            className='h-5 w-5 fill-primary-500 hover:fill-primary-900'
             viewBox='0 0 20 20'
             fill='currentColor'
           >
@@ -89,16 +88,15 @@ const Header = () => {
           src='https://images.unsplash.com/photo-1528892952291-009c663ce843?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=296&amp;q=80'
           alt='Your avatar'
         />
+        {dropDownOpen && (
+          <ProfileOptions>
+            <ProfileItem href='#' className=''>
+              Profile
+            </ProfileItem>
+            <ProfileItem href='/login'>Logout</ProfileItem>
+          </ProfileOptions>
+        )}
       </ProfileAvatar>
-
-      {dropDownOpen && (
-        <ProfileOptions>
-          <ProfileItem href='#' className=''>
-            Profile
-          </ProfileItem>
-          <ProfileItem href='/login'>Logout</ProfileItem>
-        </ProfileOptions>
-      )}
     </Wrapper>
   )
 }

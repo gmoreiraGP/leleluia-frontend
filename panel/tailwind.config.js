@@ -10,7 +10,7 @@ module.exports = {
   theme: {
     fill: {
       primary: colors.red,
-      white: colors.white,
+      white: colors.white
     },
     colors: {
       primary: colors.red,
@@ -19,10 +19,12 @@ module.exports = {
       white: colors.white,
       gray: colors.gray
     },
-    extend: {},
+    extend: {}
   },
   variants: {
-    extend: {},
+    extend: {
+      fill: ['hover', 'focus']
+    }
   },
-  plugins: [],
+  plugins: []
 }

@@ -7,10 +7,12 @@ import Title from '../Title'
 import Table from '../Table'
 
 const Layout = () => {
-  const { close, sidebarOpen } = useContext(SidebarContext)
+  const [sidebarOpen, setSidebarOpen] = useState(false)
   const [notificationOpen, setNotificationOpen] = useState(false)
 
   const notificationToggle = () => setNotificationOpen(old => !old)
+
+  const sidebarToggle = () => setSidebarOpen(old => !old)
 
   return (
     <div className='flex'>
@@ -44,13 +46,10 @@ const Layout = () => {
             <Navbar.Text>Teste 2</Navbar.Text>
           </Navbar.Link>
 
-          <div
-            className='absolute top-0 right-0 p-3'
-            onClick={() => close(sidebarOpen)}
-          >
+          <div className='absolute top-0 right-0 p-3' onClick={sidebarToggle}>
             <svg
               xmlns='http://www.w3.org/2000/svg'
-              className='h-5 w-5 fill-primary-500'
+              className='h-5 w-5 fill-primary-500 hover:fill-white'
               viewBox='0 0 20 20'
               fill='currentColor'
             >
@@ -65,7 +64,7 @@ const Layout = () => {
       )}
 
       <main className='flex flex-col w-full'>
-        <Header />
+        <Header sidebarOpen={sidebarOpen} sidebarToggle={sidebarToggle} />
         <h1>testes</h1>
       </main>
     </div>
