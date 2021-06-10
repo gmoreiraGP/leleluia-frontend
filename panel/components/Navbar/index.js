@@ -24,6 +24,7 @@ const NavbarCloseIcon = tw.div`
   top-0
   right-0
   p-3
+  cursor-pointer
 `
 
 const NavbarLink = tw.a`
@@ -37,6 +38,7 @@ const NavbarLink = tw.a`
     hover:bg-opacity-25
     hover:text-secondary-500
     w-full
+    cursor-pointer
 `
 
 const NavbarText = tw.span`
@@ -66,7 +68,7 @@ const Navbar = ({ sidebarToggle }) => {
           />
         </svg>
       </NavbarCloseIcon>
-      <Link href='/usuarios'>
+      <Link href='/painel/usuarios'>
         <NavbarLink>
           <NavbarText>Usuários</NavbarText>
         </NavbarLink>

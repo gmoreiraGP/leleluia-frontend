@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Head from 'next/head'
-import Header from '../components/Header'
-import Navbar from '../components/Navbar'
+import Header from '../../components/Header'
+import Navbar from '../../components/Navbar'
 
 const Painel = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false)
@@ -12,7 +12,7 @@ const Painel = () => {
     <div className='flex'>
       <Head>
         <link rel='icon' type='image/png' href='/truck.png' />
-        <title>Leleluia Transportes | Login</title>
+        <title>Leleluia Transportes | Painel</title>
       </Head>
       {sidebarOpen && <Navbar sidebarToggle={sidebarToggle} />}
 

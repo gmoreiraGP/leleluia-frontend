@@ -13,6 +13,7 @@ const NavWrapperIcon = tw.div`
     left-0
     p-3
     z-10
+    cursor-pointer
 `
 
 const ProfileAvatar = tw.button`
@@ -89,9 +90,9 @@ const Header = ({ sidebarOpen, sidebarToggle }) => {
         {dropDownOpen && (
           <ProfileOptions>
             <ProfileItem href='#' className=''>
-              Profile
+              Perfil
             </ProfileItem>
-            <ProfileItem href='/login'>Logout</ProfileItem>
+            <ProfileItem href='/login'>Sair</ProfileItem>
           </ProfileOptions>
         )}
       </ProfileAvatar>
