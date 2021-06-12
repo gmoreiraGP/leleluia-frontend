@@ -1,41 +1,68 @@
+import React, { useEffect } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useFormik } from 'formik'
-import { useMutation } from '../../../lib/graphql'
-import Container from '../../../components/Container'
-import Layout from '../../../components/Layout'
+import { useQuery, useMutation } from '../../../../lib/graphql'
+import Layout from '../../../../components/Layout'
+import Container from '../../../../components/Container'
 
-const CREATE_USER = `
-    mutation createUser($email: String!, $password: String!) { 
-      createUser(input: {
-        email: $email,
-        password: $password
-      }) {
-          id
-          email
-        }
-      }
-    `
+const UPDATE_USER = `
+mutation updateUser($id: String!, $email: String!, $password: String!){
+  updateUser(
+    input: {
+      id: $id
+      email: $email
+      password: $password
+    }
+  ) {
+    id
+    email
+    password
+  }
+}
+`
 
-const CreateUser = () => {
+const Edit = () => {
   const router = useRouter()
-  const [createData, createUser] = useMutation(CREATE_USER)
+
+  const { data } = useQuery(`
+    query {
+        getUserById(id: "${router.query.id}") {
+          email
+          password
+        }
+    } 
+  `)
+
+  const [updatedData, updatedUser] = useMutation(UPDATE_USER)
+
   const form = useFormik({
     initialValues: {
       email: '',
       password: ''
     },
     onSubmit: async values => {
-      await createUser(values)
+      const user = {
+        ...values,
+        id: router.query.id
+      }
+      await updatedUser(user)
       router.push('/painel/usuarios')
     }
   })
 
+  useEffect(() => {
+    if (data && data.getUserById) {
+      form.setFieldValue('email', data.getUserById.email)
+      form.setFieldValue('password', data.getUserById.password)
+    }
+  }, [data])
+
   return (
-    <Layout title='Criar usuário'>
+    <Layout title='Editar usuário'>
       <Container>
         <div className='mb-5'>
-          <h1 className='text-5xl font-bold mb-4'>Criar novo usuário</h1>
+          <h1 className='text-5xl font-bold mb-4'>Editar usuário</h1>
           <Link href='/painel/usuarios'>
             <a>Voltar</a>
           </Link>
@@ -70,7 +97,7 @@ const CreateUser = () => {
                       Senha
                     </label>
                     <input
-                      type='password'
+                      type='text'
                       name='password'
                       onChange={form.handleChange}
                       value={form.values.password}
@@ -96,4 +123,4 @@ const CreateUser = () => {
   )
 }
 
-export default CreateUser
+export default Edit

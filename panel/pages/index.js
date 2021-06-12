@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Layout from '../components/Layout'
+import Login from '../components/Login'
 
 const Index = () => {
   return (
@@ -8,7 +8,9 @@ const Index = () => {
         <link rel='icon' type='image/png' href='/truck.png' />
         <title>Leleluia Transportes | Login</title>
       </Head>
-      <Layout />
+      <div className='flex'>
+        <Login />
+      </div>
     </div>
   )
 }

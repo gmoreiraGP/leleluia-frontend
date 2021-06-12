@@ -5,7 +5,7 @@ const Wrapper = tw.header`
     relative
     p-3
     w-full
-    bg-secondary-200
+    bg-gray-200
 `
 const NavWrapperIcon = tw.div`
     absolute
@@ -54,8 +54,8 @@ const ProfileItem = tw.a`
     py-2
     text-sm
     bg-white
-    text-primary-900
-    hover:bg-primary-800
+    text-red-900
+    hover:bg-red-800
     hover:text-white
 `
 
@@ -69,7 +69,7 @@ const Header = ({ sidebarOpen, sidebarToggle }) => {
         <NavWrapperIcon onClick={sidebarToggle}>
           <svg
             xmlns='http://www.w3.org/2000/svg'
-            className='h-5 w-5 fill-primary-500 hover:fill-primary-900'
+            className='h-5 w-5 fill-red-500 hover:fill-red-900'
             viewBox='0 0 20 20'
             fill='currentColor'
           >

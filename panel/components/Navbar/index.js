@@ -5,7 +5,7 @@ import tw from 'tailwind-styled-components'
 const NavWrapper = tw.nav`
     flex
     flex-col
-    bg-secondary-900
+    bg-gray-900
     px-10
     w-1/6
     max-w-xs
@@ -36,7 +36,7 @@ const NavbarLink = tw.a`
     text-white
     hover:bg-gray-700
     hover:bg-opacity-25
-    hover:text-secondary-500
+    hover:text-gray-500
     w-full
     cursor-pointer
 `
@@ -57,7 +57,7 @@ const Navbar = ({ sidebarToggle }) => {
       <NavbarCloseIcon onClick={sidebarToggle}>
         <svg
           xmlns='http://www.w3.org/2000/svg'
-          className='h-5 w-5 fill-primary-500 hover:fill-white'
+          className='h-5 w-5 fill-red-500 hover:fill-white'
           viewBox='0 0 20 20'
           fill='currentColor'
         >
