@@ -1,3 +1,4 @@
+const { black } = require('tailwindcss/colors')
 const colors = require('tailwindcss/colors')
 
 module.exports = {
@@ -9,21 +10,25 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     fill: {
-      primary: colors.red,
-      white: colors.white
+      transparent: 'transparent',
+      red: colors.red,
+      gray: colors.gray,
+      white: colors.white,
+      black: colors.black
     },
     colors: {
-      primary: colors.red,
-      secondary: colors.warmGray,
-      complementary: colors.purple,
+      transparent: 'transparent',
+      red: colors.red,
+      gray: colors.gray,
       white: colors.white,
-      gray: colors.gray
+      black: colors.blueBlack
     },
     extend: {}
   },
   variants: {
     extend: {
-      fill: ['hover', 'focus', 'group-hover']
+      fill: ['hover', 'focus', 'group-hover'],
+      scale: ['focus-within']
     }
   },
   plugins: []
