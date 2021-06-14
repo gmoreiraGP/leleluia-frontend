@@ -14,7 +14,8 @@ module.exports = {
       red: colors.red,
       gray: colors.gray,
       white: colors.white,
-      black: colors.black
+      black: colors.black,
+      current: 'currentColor'
     },
     colors: {
       transparent: 'transparent',
@@ -27,6 +28,7 @@ module.exports = {
   },
   variants: {
     extend: {
+      fontWeight: ['hover', 'focus'],
       fill: ['hover', 'focus', 'group-hover'],
       scale: ['focus-within']
     }

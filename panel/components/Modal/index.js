@@ -66,7 +66,6 @@ const ModalButton = tw.button`
     rounded-lg
     focus:outline-none
     p-3
-    h-4/5
 `
 
 const ModalBox = tw.div`

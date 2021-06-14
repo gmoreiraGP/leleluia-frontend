@@ -4,6 +4,8 @@ import { useFormik } from 'formik'
 import { useMutation } from '../../../lib/graphql'
 import Container from '../../../components/Container'
 import Layout from '../../../components/Layout'
+import HeaderMain from '../../../components/HeaderMain'
+import Form from '../../../components/Form'
 
 const CREATE_USER = `
     mutation createUser($email: String!, $password: String!) { 
@@ -20,7 +22,7 @@ const CREATE_USER = `
 const CreateUser = () => {
   const router = useRouter()
   const [createData, createUser] = useMutation(CREATE_USER)
-  const form = useFormik({
+  const formikForm = useFormik({
     initialValues: {
       email: '',
       password: ''
@@ -34,63 +36,42 @@ const CreateUser = () => {
   return (
     <Layout title='Criar usuário'>
       <Container>
-        <div className='mb-5'>
+        <HeaderMain>
           <h1 className='text-5xl font-bold mb-4'>Criar novo usuário</h1>
           <Link href='/painel/usuarios'>
-            <a>Voltar</a>
+            <HeaderMain.Link>Voltar</HeaderMain.Link>
           </Link>
-        </div>
-        <div className='mt-5 md:mt-0 md:col-span-2'>
-          <form onSubmit={form.handleSubmit}>
-            <div className='shadow overflow-hidden sm:rounded-md'>
-              <div className='px-4 py-5 bg-white sm:p-6'>
-                <div className='grid grid-cols-6 gap-6'>
-                  <div className='col-span-6 sm:col-span-3'>
-                    <label
-                      htmlFor='email'
-                      className='block text-sm font-medium text-gray-700'
-                    >
-                      Email
-                    </label>
-                    <input
-                      type='text'
-                      name='email'
-                      onChange={form.handleChange}
-                      value={form.values.email}
-                      id='email'
-                      className='p-2 mt-2 focus:ring-red-500 focus:border-red-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md'
-                    />
-                  </div>
+        </HeaderMain>
+        <Form onSubmit={formikForm.handleSubmit}>
+          <Form.GroupInput>
+            <Form.BoxInput>
+              <Form.Label htmlFor='email'>Email</Form.Label>
 
-                  <div className='col-span-6 sm:col-span-3'>
-                    <label
-                      htmlFor='password'
-                      className='block text-sm font-medium text-gray-700'
-                    >
-                      Senha
-                    </label>
-                    <input
-                      type='password'
-                      name='password'
-                      onChange={form.handleChange}
-                      value={form.values.password}
-                      id='password'
-                      className='p-2 mt-2 focus:ring-red-500 focus:border-red-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md'
-                    />
-                  </div>
-                </div>
-              </div>
-              <div className='px-4 py-3 bg-gray-50 text-right sm:px-6'>
-                <button
-                  type='submit'
-                  className='inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500'
-                >
-                  Salvar
-                </button>
-              </div>
-            </div>
-          </form>
-        </div>
+              <Form.Input
+                type='text'
+                name='email'
+                onChange={formikForm.handleChange}
+                value={formikForm.values.email}
+                id='email'
+              />
+            </Form.BoxInput>
+            <Form.BoxInput>
+              <Form.Label htmlFor='password'>Senha</Form.Label>
+              <Form.Input
+                type='password'
+                name='password'
+                onChange={formikForm.handleChange}
+                value={formikForm.values.password}
+                id='password'
+              />
+            </Form.BoxInput>
+          </Form.GroupInput>
+          <Form.ButtonBox>
+            <Form.Button type='submit' $submitType={true}>
+              Salvar
+            </Form.Button>
+          </Form.ButtonBox>
+        </Form>
       </Container>
     </Layout>
   )

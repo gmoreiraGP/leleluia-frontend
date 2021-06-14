@@ -5,6 +5,7 @@ import { useFormik } from 'formik'
 import { useQuery, useMutation } from '../../../../lib/graphql'
 import Layout from '../../../../components/Layout'
 import Container from '../../../../components/Container'
+import HeaderMain from '../../../../components/HeaderMain'
 
 const UPDATE_USER = `
 mutation updateUser($id: String!, $email: String!, $password: String!){
@@ -61,12 +62,12 @@ const Edit = () => {
   return (
     <Layout title='Editar usuário'>
       <Container>
-        <div className='mb-5'>
+        <HeaderMain>
           <h1 className='text-5xl font-bold mb-4'>Editar usuário</h1>
           <Link href='/painel/usuarios'>
-            <a>Voltar</a>
+            <HeaderMain.Link>Voltar</HeaderMain.Link>
           </Link>
-        </div>
+        </HeaderMain>
         <div className='mt-5 md:mt-0 md:col-span-2'>
           <form onSubmit={form.handleSubmit}>
             <div className='shadow overflow-hidden sm:rounded-md'>

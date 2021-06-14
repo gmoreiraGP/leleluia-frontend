@@ -1,10 +1,15 @@
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 import Link from 'next/link'
 
-import { Dialog, Transition } from '@headlessui/react'
-import { ExclamationIcon } from '@heroicons/react/outline'
+import {
+  ExclamationIcon,
+  EyeIcon,
+  PencilAltIcon,
+  TrashIcon
+} from '@heroicons/react/outline'
 import { useMutation, useQuery } from '../../../lib/graphql'
 import Layout from '../../../components/Layout'
+import HeaderMain from '../../../components/HeaderMain'
 import Table from '../../../components/Table'
 import Container from '../../../components/Container'
 import Modal from '../../../components/Modal'
@@ -28,7 +33,6 @@ const Painel = () => {
   const { data, mutate } = useQuery(GET_ALL_USERS)
   const [deleteData, deleteUser] = useMutation(DELETE_USER)
   const [openModal, setOpenModal] = useState(false)
-  const cancelButtonRef = useRef(null)
 
   const dialogDelete = () => setOpenModal(old => !old)
 
@@ -41,10 +45,12 @@ const Painel = () => {
   return (
     <Layout title='Usuários'>
       <Container>
-        <h1 className='text-5xl font-bold mb-4'>Usuários</h1>
-        <Link href='/painel/usuarios/criar'>
-          <a>Criar usuário</a>
-        </Link>
+        <HeaderMain>
+          <h1 className='text-5xl font-bold mb-4'>Usuários</h1>
+          <Link href='/painel/usuarios/criar'>
+            <HeaderMain.Link>Criar usuário</HeaderMain.Link>
+          </Link>
+        </HeaderMain>
         <Table>
           <Table.Head>
             <Table.TH>Email</Table.TH>
@@ -61,13 +67,28 @@ const Painel = () => {
                     <Table.TD></Table.TD>
                     <Table.TD>
                       <div className='flex justify-start items-center gap-2'>
-                        <Link href={`/painel/usuarios/${user.id}/edit`}>
-                          <a>Editar</a>
+                        <Link href={`/painel/usuarios/${user.id}`}>
+                          <Table.Link>
+                            <EyeIcon
+                              className='h-6 w-6 text-gray-400 group-hover:text-white '
+                              aria-hidden='true'
+                            />
+                          </Table.Link>
                         </Link>
-                        {'|'}
-                        <a href='#' onClick={dialogDelete}>
-                          Remover
-                        </a>
+                        <Link href={`/painel/usuarios/${user.id}/edit`}>
+                          <Table.Link>
+                            <PencilAltIcon
+                              className='h-6 w-6 text-gray-400 group-hover:text-white '
+                              aria-hidden='true'
+                            />
+                          </Table.Link>
+                        </Link>
+                        <Table.Button onClick={dialogDelete}>
+                          <TrashIcon
+                            className='h-6 w-6 text-gray-400 group-hover:text-white '
+                            aria-hidden='true'
+                          />
+                        </Table.Button>
                       </div>
                       {openModal && (
                         <Modal>

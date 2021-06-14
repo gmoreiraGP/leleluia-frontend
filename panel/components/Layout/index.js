@@ -7,6 +7,7 @@ const Layout = ({ children, title }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false)
 
   const sidebarToggle = () => setSidebarOpen(old => !old)
+
   return (
     <div className='flex'>
       <Head>
