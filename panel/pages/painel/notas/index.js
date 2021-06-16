@@ -29,7 +29,7 @@ mutation deleteUser($id: String!) {
   }
 `
 
-const Usuarios = () => {
+const Painel = () => {
   const { data, mutate } = useQuery(GET_ALL_USERS)
   const [deleteData, deleteUser] = useMutation(DELETE_USER)
   const [openModal, setOpenModal] = useState(false)
@@ -43,15 +43,15 @@ const Usuarios = () => {
   }
 
   return (
-    <Layout title='Usuários'>
+    <Layout title='Notas fiscais'>
       <Container>
         <HeaderMain>
-          <h1 className='text-5xl font-bold mb-4'>Usuários</h1>
-          <Link href='/painel/usuarios/criar'>
-            <HeaderMain.Link>Criar usuário</HeaderMain.Link>
+          <h1 className='text-5xl font-bold mb-4'>Notas Fiscais</h1>
+          <Link href='/painel/notas/criar'>
+            <HeaderMain.Link>Criar nota fiscal</HeaderMain.Link>
           </Link>
         </HeaderMain>
-        <Table>
+        {/* <Table>
           <Table.Head>
             <Table.TH>Email</Table.TH>
             <Table.TH>Função</Table.TH>
@@ -122,9 +122,10 @@ const Usuarios = () => {
               })}
           </Table.Body>
         </Table>
+      */}
       </Container>
     </Layout>
   )
 }
 
-export default Usuarios
+export default Painel

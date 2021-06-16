@@ -73,7 +73,7 @@ const Navbar = ({ sidebarToggle }) => {
           <NavbarText>Usuários</NavbarText>
         </NavbarLink>
       </Link>
-      <Link href='/notas'>
+      <Link href='/painel/notas'>
         <NavbarLink>
           <NavbarText>Notas Fiscais</NavbarText>
         </NavbarLink>
