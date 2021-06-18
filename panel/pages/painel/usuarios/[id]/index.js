@@ -15,8 +15,15 @@ const OneUser = () => {
           email
           password
         }
+        getProfileById(id: "${router.query.id}") {
+          firstName
+          lastName
+          bio
+          social
+        }
     } 
   `)
+
   return (
     <Layout>
       <Container>
@@ -33,6 +40,12 @@ const OneUser = () => {
                 <Profile.Label>Email:</Profile.Label>
                 <Profile.Text>{data.getUserById.email}</Profile.Text>
               </Profile.Header>
+              <Profile.Text>
+                Nome: {data.getProfileById?.firstName}{' '}
+                {data.getProfileById?.lastName}
+              </Profile.Text>
+              <Profile.Text>Bio: {data.getProfileById?.bio}</Profile.Text>
+              <Profile.Text>Social: {data.getProfileById?.social}</Profile.Text>
             </Profile>
           )}
         </div>
