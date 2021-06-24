@@ -1,9 +1,9 @@
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useQuery } from '../../../../lib/graphql'
 import Layout from '../../../../components/Layout'
 import Container from '../../../../components/Container'
 import HeaderMain from '../../../../components/HeaderMain'
-import Link from 'next/link'
 import Profile from '../../../../components/Profile'
 
 const OneUser = () => {
@@ -15,6 +15,10 @@ const OneUser = () => {
           email
           password
         }
+    } 
+  `)
+  const { data: dataProfile } = useQuery(`
+    query {
         getProfileById(id: "${router.query.id}") {
           firstName
           lastName
@@ -33,22 +37,55 @@ const OneUser = () => {
             <HeaderMain.Link>Voltar</HeaderMain.Link>
           </Link>
         </HeaderMain>
-        <div>
+        {/* <div>
           {data && data.getUserById && (
             <Profile>
               <Profile.Header>
                 <Profile.Label>Email:</Profile.Label>
                 <Profile.Text>{data.getUserById.email}</Profile.Text>
               </Profile.Header>
-              <Profile.Text>
-                Nome: {data.getProfileById?.firstName}{' '}
-                {data.getProfileById?.lastName}
-              </Profile.Text>
-              <Profile.Text>Bio: {data.getProfileById?.bio}</Profile.Text>
-              <Profile.Text>Social: {data.getProfileById?.social}</Profile.Text>
             </Profile>
+            
           )}
+          {dataProfile ? (
+                dataProfile.getProfileById && (
+                  <>
+                    <Profile.Text>
+                      Nome: {dataProfile.getProfileById?.firstName}{' '}
+                      {dataProfile.getProfileById?.lastName}
+                    </Profile.Text>
+                    <Profile.Text>
+                      Bio: {dataProfile.getProfileById?.bio}
+                    </Profile.Text>
+                    <Profile.Text>
+                      Social: {dataProfile.getProfileById?.social}
+                    </Profile.Text>
+                  </>
+                )
+              ) : (
+                <div className='flex justify-center items-end flex-col'>
+                  <div>Seu perfil ainda não foi criado.</div>
+                  <Link href={`${router.query.id}/profile`}>
+                    <a>Criar perfil</a>
+                  </Link>
+                </div>
+              )}
         </div>
+
+      */}
+        <Profile>
+          <Profile.Header>
+            <Profile.Thumb />
+            <div className='flex justify-center items-start flex-col'>
+              <Profile.Text $title={true}>
+                {dataProfile?.getProfileById?.firstName}
+                &nbsp;
+                {dataProfile?.getProfileById?.lastName}
+              </Profile.Text>
+              <Profile.Text>{dataProfile?.getProfileById?.bio}</Profile.Text>
+            </div>
+          </Profile.Header>
+        </Profile>
       </Container>
     </Layout>
   )

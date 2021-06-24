@@ -1,6 +1,5 @@
 import Image from 'next/image'
 import tw from 'tailwind-styled-components'
-import { empty } from 'uuidv4'
 
 const Wrapper = tw.div`
     min-h-screen

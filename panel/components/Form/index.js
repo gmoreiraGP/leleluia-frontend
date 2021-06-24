@@ -26,7 +26,8 @@ const InputGroup = tw.div`
   items-center
   p-6
   gap-3
-`
+  ${props => (props.flexRow ? 'flex-row' : 'flex-col')}
+  `
 
 const FormBoxInput = tw.div`
   w-full
@@ -89,8 +90,8 @@ const Form = ({ onSubmit, children }) => {
   )
 }
 
-const GroupInput = ({ children }) => {
-  return <InputGroup>{children}</InputGroup>
+const GroupInput = ({ children, flexRow }) => {
+  return <InputGroup flexRow={flexRow}>{children}</InputGroup>
 }
 
 Form.GroupInput = GroupInput

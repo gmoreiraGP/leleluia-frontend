@@ -67,9 +67,7 @@ const CreateUser = () => {
             </Form.BoxInput>
           </Form.GroupInput>
           <Form.ButtonBox>
-            <Form.Button type='submit' $submitType={true}>
-              Salvar
-            </Form.Button>
+            <Form.Button type='submit'>Salvar</Form.Button>
           </Form.ButtonBox>
         </Form>
       </Container>
