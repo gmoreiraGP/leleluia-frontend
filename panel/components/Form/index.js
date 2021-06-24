@@ -31,6 +31,7 @@ const InputGroup = tw.div`
 
 const FormBoxInput = tw.div`
   w-full
+  relative
 `
 
 const FormLabel = tw.label`
@@ -55,6 +56,13 @@ const FormInput = tw.input`
     border-gray-300
     rounded-lg
 `
+
+const FormIcon = tw.div`
+  absolute
+  top-8
+  w-5
+`
+
 const ButtonBox = tw.div`
     px-4
     py-3
@@ -98,6 +106,7 @@ Form.GroupInput = GroupInput
 Form.BoxInput = FormBoxInput
 Form.Label = FormLabel
 Form.Input = FormInput
+Form.Icon = FormIcon
 Form.ButtonBox = ButtonBox
 Form.Button = FormButton
 
