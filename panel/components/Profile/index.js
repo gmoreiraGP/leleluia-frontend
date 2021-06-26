@@ -6,12 +6,16 @@ const Wrapper = tw.div`
     items-center
     flex-row
 `
-const ProfileThumb = tw.div`
+const ProfileThumbImage = tw.div`
   w-20
   h-20
   rounded-full
   bg-gray-200
   text-white	
+  relative
+  ${props =>
+    props.$initials &&
+    `before:content-['${props.$initialsLetters}'] before:text-gray-900 before:text-sm before:block`}
 `
 const ProfileHeader = tw.div`
   flex
@@ -37,6 +41,15 @@ const ProfileLabel = tw.div`
 
 const Profile = ({ children }) => {
   return <Wrapper>{children}</Wrapper>
+}
+
+const ProfileThumb = ({ $initials, $initialsLetters }) => {
+  return (
+    <ProfileThumbImage
+      $initials={$initials}
+      $initialsLetters={$initialsLetters}
+    />
+  )
 }
 
 Profile.Thumb = ProfileThumb

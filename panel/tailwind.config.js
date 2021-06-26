@@ -1,4 +1,3 @@
-const { black } = require('tailwindcss/colors')
 const colors = require('tailwindcss/colors')
 
 module.exports = {

@@ -28,6 +28,16 @@ const OneUser = () => {
     } 
   `)
 
+  const initials = () => {
+    const firstName = dataProfile?.getProfileById?.firstName
+    const lastName = dataProfile?.getProfileById?.lastName
+
+    const firstLetter = firstName?.substr(0, 1)
+    const lastLetter = lastName?.substr(0, 1)
+    const init = firstLetter + lastLetter
+    return init
+  }
+
   return (
     <Layout>
       <Container>
@@ -75,7 +85,7 @@ const OneUser = () => {
       */}
         <Profile>
           <Profile.Header>
-            <Profile.Thumb />
+            <Profile.Thumb $initials={true} $initialsLetters={initials()} />
             <div className='flex justify-center items-start flex-col'>
               <Profile.Text $title={true}>
                 {dataProfile?.getProfileById?.firstName}

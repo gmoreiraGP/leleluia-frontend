@@ -8,9 +8,7 @@ const Index = () => {
         <link rel='icon' type='image/png' href='/truck.png' />
         <title>Leleluia Transportes | Login</title>
       </Head>
-      <div className='flex'>
-        <Login />
-      </div>
+      <Login />
     </div>
   )
 }
