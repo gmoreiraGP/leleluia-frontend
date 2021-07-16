@@ -1,6 +1,9 @@
+import { useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useFormik } from 'formik'
+import { EyeIcon, EyeOffIcon } from '@heroicons/react/solid'
+
 import { useMutation } from '../../../lib/graphql'
 import Container from '../../../components/Container'
 import Layout from '../../../components/Layout'
@@ -21,6 +24,13 @@ const CREATE_USER = `
 
 const CreateUser = () => {
   const router = useRouter()
+
+  const [togglePassword, setTogglePassword] = useState(false)
+
+  const handlePassword = () => {
+    setTogglePassword(old => !old)
+  }
+
   const [createData, createUser] = useMutation(CREATE_USER)
   const formikForm = useFormik({
     initialValues: {
@@ -37,7 +47,7 @@ const CreateUser = () => {
     <Layout title='Criar usuário'>
       <Container>
         <HeaderMain>
-          <h1 className='text-5xl font-bold mb-4'>Criar novo usuário</h1>
+          <HeaderMain.Title>Criar novo usuário</HeaderMain.Title>
           <Link href='/painel/usuarios'>
             <HeaderMain.Link>Voltar</HeaderMain.Link>
           </Link>
@@ -58,12 +68,15 @@ const CreateUser = () => {
             <Form.BoxInput>
               <Form.Label htmlFor='password'>Senha</Form.Label>
               <Form.Input
-                type='password'
+                type={togglePassword ? 'text' : 'password'}
                 name='password'
                 onChange={formikForm.handleChange}
                 value={formikForm.values.password}
                 id='password'
               />
+              <Form.Icon onClick={handlePassword}>
+                {togglePassword ? <EyeOffIcon /> : <EyeIcon />}
+              </Form.Icon>
             </Form.BoxInput>
           </Form.GroupInput>
           <Form.ButtonBox>

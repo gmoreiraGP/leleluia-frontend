@@ -49,7 +49,7 @@ const ProfileEdit = () => {
     <Layout>
       <Container>
         <HeaderMain>
-          <h1 className='text-5xl font-bold mb-4'>Criar perfil</h1>
+          <HeaderMain.Title>Criar perfil</HeaderMain.Title>
           <Link href={`/painel/usuarios/${router.query.id}`}>
             <HeaderMain.Link>Voltar</HeaderMain.Link>
           </Link>

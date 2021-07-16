@@ -28,13 +28,16 @@ const OneUser = () => {
     } 
   `)
 
-  const initials = () => {
+  const Letters = () => {
     const firstName = dataProfile?.getProfileById?.firstName
     const lastName = dataProfile?.getProfileById?.lastName
 
     const firstLetter = firstName?.substr(0, 1)
     const lastLetter = lastName?.substr(0, 1)
     const init = firstLetter + lastLetter
+    if (!init) {
+      return ''
+    }
     return init
   }
 
@@ -42,7 +45,7 @@ const OneUser = () => {
     <Layout>
       <Container>
         <HeaderMain>
-          <h1 className='text-5xl font-bold mb-4'>Perfil do usuário</h1>
+          <HeaderMain.Title>Perfil do usuário</HeaderMain.Title>
           <Link href='/painel/usuarios'>
             <HeaderMain.Link>Voltar</HeaderMain.Link>
           </Link>
@@ -85,15 +88,17 @@ const OneUser = () => {
       */}
         <Profile>
           <Profile.Header>
-            <Profile.Thumb $initials={true} $initialsLetters={initials()} />
-            <div className='flex justify-center items-start flex-col'>
-              <Profile.Text $title={true}>
+            <Profile.Thumb initials initialsLetters={Letters()}>
+              {/* <span>{Letters()}</span> */}
+            </Profile.Thumb>
+            <Profile.WrapperText>
+              <Profile.Text title>
                 {dataProfile?.getProfileById?.firstName}
                 &nbsp;
                 {dataProfile?.getProfileById?.lastName}
               </Profile.Text>
               <Profile.Text>{dataProfile?.getProfileById?.bio}</Profile.Text>
-            </div>
+            </Profile.WrapperText>
           </Profile.Header>
         </Profile>
       </Container>

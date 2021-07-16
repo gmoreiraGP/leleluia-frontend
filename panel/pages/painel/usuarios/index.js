@@ -1,18 +1,19 @@
 import { useState } from 'react'
 import Link from 'next/link'
-
 import {
   ExclamationIcon,
   EyeIcon,
   PencilAltIcon,
   TrashIcon
 } from '@heroicons/react/outline'
+
 import { useMutation, useQuery } from '../../../lib/graphql'
 import Layout from '../../../components/Layout'
 import HeaderMain from '../../../components/HeaderMain'
 import Table from '../../../components/Table'
 import Container from '../../../components/Container'
 import Modal from '../../../components/Modal'
+import Header from '../../../components/Header'
 
 const GET_ALL_USERS = `
     query{ 
@@ -46,7 +47,7 @@ const Usuarios = () => {
     <Layout title='Usuários'>
       <Container>
         <HeaderMain>
-          <h1 className='text-5xl font-bold mb-4'>Usuários</h1>
+          <HeaderMain.Title>Usuários</HeaderMain.Title>
           <Link href='/painel/usuarios/criar'>
             <HeaderMain.Link>Criar usuário</HeaderMain.Link>
           </Link>
@@ -66,38 +67,26 @@ const Usuarios = () => {
                     <Table.TD>{user.email}</Table.TD>
                     <Table.TD></Table.TD>
                     <Table.TD>
-                      <div className='flex justify-start items-center gap-2'>
+                      <Table.WrapperActions>
                         <Link href={`/painel/usuarios/${user.id}`}>
                           <Table.Link>
-                            <EyeIcon
-                              className='h-6 w-6 text-gray-400 group-hover:text-white '
-                              aria-hidden='true'
-                            />
+                            <EyeIcon />
                           </Table.Link>
                         </Link>
                         <Link href={`/painel/usuarios/${user.id}/edit`}>
                           <Table.Link>
-                            <PencilAltIcon
-                              className='h-6 w-6 text-gray-400 group-hover:text-white '
-                              aria-hidden='true'
-                            />
+                            <PencilAltIcon />
                           </Table.Link>
                         </Link>
                         <Table.Button onClick={dialogDelete}>
-                          <TrashIcon
-                            className='h-6 w-6 text-gray-400 group-hover:text-white '
-                            aria-hidden='true'
-                          />
+                          <TrashIcon />
                         </Table.Button>
-                      </div>
+                      </Table.WrapperActions>
                       {openModal && (
                         <Modal>
                           <Modal.Header>
                             <Modal.Icon>
-                              <ExclamationIcon
-                                className='h-6 w-6 text-red-600'
-                                aria-hidden='true'
-                              />
+                              <ExclamationIcon />
                             </Modal.Icon>
                             <Modal.Title>
                               Tem certeza que deseja remover esse usuário?
@@ -108,7 +97,7 @@ const Usuarios = () => {
                               Cancelar
                             </Modal.Button>
                             <Modal.Button
-                              $confirm={true}
+                              delete={true}
                               onClick={remove(user.id)}
                             >
                               Deletar

@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useFormik } from 'formik'
-import { EyeIcon } from '@heroicons/react/solid'
+import { EyeIcon, EyeOffIcon } from '@heroicons/react/solid'
+
 import { useQuery, useMutation } from '../../../../lib/graphql'
 import Layout from '../../../../components/Layout'
 import Container from '../../../../components/Container'
@@ -11,7 +12,11 @@ import Form from '../../../../components/Form'
 
 const Edit = () => {
   const router = useRouter()
-  const { isPasswordShown } = useState(false)
+  const [togglePassword, setTogglePassword] = useState(false)
+
+  const handlePassword = () => {
+    setTogglePassword(old => !old)
+  }
 
   const UPDATE_USER = `
   mutation updateUser($email: String!, $password: String!){
@@ -65,13 +70,13 @@ const Edit = () => {
     <Layout title='Editar usuário'>
       <Container>
         <HeaderMain>
-          <h1 className='text-5xl font-bold mb-4'>Editar usuário</h1>
+          <HeaderMain.Title>Editar usuário</HeaderMain.Title>
           <Link href='/painel/usuarios'>
             <HeaderMain.Link>Voltar</HeaderMain.Link>
           </Link>
         </HeaderMain>
         <Form onSubmit={form.handleSubmit}>
-          <Form.GroupInput flexRow>
+          <Form.GroupInput>
             <Form.BoxInput>
               <Form.Label htmlFor='email'>Email</Form.Label>
               <Form.Input
@@ -85,14 +90,14 @@ const Edit = () => {
             <Form.BoxInput htmlFor='password'>
               <Form.Label>Password</Form.Label>
               <Form.Input
-                type={isPasswordShown ? 'text' : 'password'}
+                type={togglePassword ? 'text' : 'password'}
                 name='password'
                 onChange={form.handleChange}
                 value={form.values.password}
                 id='password'
               />
-              <Form.Icon>
-                <EyeIcon />
+              <Form.Icon onClick={handlePassword}>
+                {togglePassword ? <EyeOffIcon /> : <EyeIcon />}
               </Form.Icon>
             </Form.BoxInput>
           </Form.GroupInput>

@@ -46,7 +46,7 @@ const Painel = () => {
     <Layout title='Notas fiscais'>
       <Container>
         <HeaderMain>
-          <h1 className='text-5xl font-bold mb-4'>Notas Fiscais</h1>
+          <HeaderMain.Title>Notas Fiscais</HeaderMain.Title>
           <Link href='/painel/notas/criar'>
             <HeaderMain.Link>Criar nota fiscal</HeaderMain.Link>
           </Link>
