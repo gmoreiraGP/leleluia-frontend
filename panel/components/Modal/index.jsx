@@ -1,9 +1,15 @@
-import { Container, Box, Wrapper, ModalButton, ModalBox, ModalIcon, ModalTitle, ModalHeader } from './styles'
-const Modal = ({ children }) => {
+import { XCircleIcon } from '@heroicons/react/solid'
+import { Container, Box, Close, Wrapper, ModalButton, ModalBox, ModalIcon, ModalTitle, ModalHeader } from './styles'
+const Modal = ({ children, close }) => {
   return (
     <Container>
       <Box>
-        <Wrapper>{children}</Wrapper>
+        <Wrapper>
+          <Close onClick={close}>
+            <XCircleIcon />
+          </Close>
+          {children}
+          </Wrapper>
       </Box>
     </Container>
   )

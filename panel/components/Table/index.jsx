@@ -1,21 +1,32 @@
-import {Table, TableData, TableBody, TableTH, TableTR, TableTD, TableWrapperActions, TableButton, TableLink} from './styles'
+import React from 'react';
 
-const TableHead = ({ children }) => {
-  return (
-    <thead>
-      <tr>{children}</tr>
-    </thead>
-  )
+import { Container,TableHead, TableData } from './styles';
+
+const Table = (props) => {
+  return <Container>
+      <TableHead>
+          {props.head?.map((value) => {
+              return(
+                  <div key={value}>
+                    <span key={value.id}>{value}</span>
+                  </div>
+              )
+          })}
+      </TableHead>
+      <TableData>
+        {props.data?.map((item) => {
+        return(
+            <div key={item.id}>
+                <span onClick={props.details}>{item.company}</span>
+                <span>{item.invoiceNumber}</span>
+                <span>{item.status}</span>
+            </div>
+        )
+        })}
+      </TableData>
+  </Container>;
 }
 
-Table.Head = TableHead
-Table.Data = TableData
-Table.Body = TableBody
-Table.TH = TableTH
-Table.TR = TableTR
-Table.TD = TableTD
-Table.WrapperActions = TableWrapperActions
-Table.Button = TableButton
-Table.Link = TableLink
 
-export default Table
+
+export default Table;

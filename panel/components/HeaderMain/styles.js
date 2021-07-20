@@ -18,7 +18,6 @@ export const HeaderMainLink = styled.a`
   background: ${props => rgba(props.theme.colors.gray, 0.2)};
   padding: ${props => props.theme.size.sm};
   color: ${props => rgba(props.theme.colors.white, 0.9)};
-  border-radius: ${props => props.theme.size.sm};
   cursor: pointer;
 
   &:hover {

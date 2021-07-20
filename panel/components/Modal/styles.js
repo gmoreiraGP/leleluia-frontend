@@ -23,15 +23,25 @@ export const Box = styled.div`
 `
 
 export const Wrapper = styled.div`
+  position: relative;
   ${Flex};
   flex-direction: column;
   width: 50%;
   height: 33%;
   margin: 0 auto;
   background: ${props => rgba(props.theme.colors.gray, 0.5)};
-  border-radius: ${props => props.theme.size.sm};
+  box-shadow: ${props => props.theme.shadow.sm},
+    ${props => props.theme.shadow.lg};
   gap: ${props => props.theme.size.sm};
 `
+export const Close = styled.div`
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 25px;
+  height: 25px;
+`
+
 export const ModalHeader = styled.div`
   ${Flex};
   flex-direction: column;
@@ -59,21 +69,22 @@ export const ModalIcon = styled.div`
 
 export const ModalButton = styled.button`
   font-weight: 500;
-  border-radius: ${props => props.theme.size.lg};
   padding: ${props => props.theme.size.sm};
+  color: ${props => props.theme.colors.white};
   background-color: ${props =>
-    props.delete ? props.theme.colors.red : props.theme.colors.gray};
+    props.delete
+      ? props.theme.colors.red
+      : rgba(props.theme.colors.black, 0.2)};
   &:focus {
     outline: none;
   }
 `
 
 export const ModalBox = styled.div`
-  width: 90%;
+  width: 100%;
   ${Flex};
   justify-content: space-around;
   padding: ${props => props.theme.size.sm};
-  background: ${props => rgba(props.theme.colors.black, 0.2)};
-  border-radius: ${props => props.theme.size.lg};
+  /* background: ${props => rgba(props.theme.colors.black, 0.2)}; */
   gap: ${props => props.theme.size.sm};
 `

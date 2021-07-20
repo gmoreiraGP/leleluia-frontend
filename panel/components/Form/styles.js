@@ -18,7 +18,6 @@ export const FormStyled = styled.form`
   flex-direction: column;
   width: 100%;
   background: ${props => props.theme.colors.white};
-  border-radius: ${props => props.theme.size.lg};
   gap: ${props => props.theme.size.md};
   box-shadow: ${props => props.theme.shadow.md};
   overflow: hidden;
@@ -51,7 +50,6 @@ export const FormInput = styled.input`
   display: block;
   width: 100%;
   border: ${props => props.theme.size.sm};
-  border-radius: ${props => props.theme.size.lg};
   padding: ${props => props.theme.size.sm};
   margin-top: ${props => props.theme.size.sm};
   box-shadow: ${props => props.theme.shadow.sm};
@@ -68,7 +66,7 @@ export const FormInput = styled.input`
 
 export const FormIcon = styled.div`
   position: absolute;
-  top: 60px;
+  top: 50px;
   right: 20px;
   width: 20px;
   cursor: pointer;
@@ -91,7 +89,6 @@ export const FormButton = styled.button`
   box-shadow: ${props => props.theme.shadow.sm};
   font-size: ${props => props.theme.size.sm};
   font-weight: 500;
-  border-radius: ${props => props.theme.size.md};
   color: ${props => props.theme.colors.white};
   background: ${props => rgba(props.theme.colors.red, 0.7)};
 
