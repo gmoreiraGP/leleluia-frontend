@@ -15,13 +15,13 @@ const Header = ({ sidebarOpen, sidebarToggle }) => {
 
   return (
     <Wrapper>
-      {!sidebarOpen && (
+      {/* {!sidebarOpen && (
         <NavWrapperIcon onClick={sidebarToggle}>
           <MenuAlt2Icon />
         </NavWrapperIcon>
-      )}
+      )} */}
 
-      <ProfileAvatar onClick={dropDownToggle}>
+      {/* <ProfileAvatar onClick={dropDownToggle}>
         <ProfileImage
           src='https://images.unsplash.com/photo-1528892952291-009c663ce843?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=296&amp;q=80'
           alt='Your avatar'
@@ -34,7 +34,7 @@ const Header = ({ sidebarOpen, sidebarToggle }) => {
             <ProfileItem href='/login'>Sair</ProfileItem>
           </ProfileOptions>
         )}
-      </ProfileAvatar>
+      </ProfileAvatar> */}
     </Wrapper>
   )
 }

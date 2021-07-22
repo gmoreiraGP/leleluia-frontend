@@ -14,6 +14,7 @@ export const Container = styled.div`
   top: 0;
   left: 0;
   z-index: 10;
+  background: ${props => rgba(props.theme.colors.black, 0.8)};
   backdrop-filter: blur(10px);
 `
 
@@ -25,33 +26,57 @@ export const Box = styled.div`
 export const Wrapper = styled.div`
   position: relative;
   ${Flex};
+  /* justify-content: flex-end; */
+  /* align-items: flex-end; */
   flex-direction: column;
-  width: 50%;
-  height: 33%;
+  width: 70%;
   margin: 0 auto;
-  background: ${props => rgba(props.theme.colors.gray, 0.5)};
+  padding: ${props => props.theme.size.sm};
+  background: ${props => props.theme.colors.white};
   box-shadow: ${props => props.theme.shadow.sm},
     ${props => props.theme.shadow.lg};
   gap: ${props => props.theme.size.sm};
 `
 export const Close = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
   top: 10px;
   right: 10px;
-  width: 25px;
-  height: 25px;
+
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  background: ${props => props.theme.colors.red};
+  color: ${props => props.theme.colors.white};
+  cursor: pointer;
+
+  svg {
+    transform: translateX(-0.5px);
+  }
+
+  &:hover {
+    background: ${props => props.theme.colors.lightRed};
+    color: ${props => props.theme.colors.white};
+  }
 `
 
 export const ModalHeader = styled.div`
   ${Flex};
   flex-direction: column;
-  height: 33%;
+  justify-content: start;
+  align-items: start;
+  width: 90%;
   gap: ${props => props.theme.size.sm};
 `
 
 export const ModalTitle = styled.h3`
-  text-align: center;
+  color: ${props => props.theme.colors.black};
+  font-size: 24px;
   font-weight: 700;
+  text-align: right;
+  text-transform: uppercase;
 `
 export const ModalIcon = styled.div`
   ${Flex};
@@ -67,24 +92,15 @@ export const ModalIcon = styled.div`
   }
 `
 
-export const ModalButton = styled.button`
-  font-weight: 500;
-  padding: ${props => props.theme.size.sm};
-  color: ${props => props.theme.colors.white};
-  background-color: ${props =>
-    props.delete
-      ? props.theme.colors.red
-      : rgba(props.theme.colors.black, 0.2)};
-  &:focus {
-    outline: none;
-  }
+export const ModalButton = styled.div`
+  width: 90%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 `
 
 export const ModalBox = styled.div`
-  width: 100%;
+  width: 90%;
   ${Flex};
-  justify-content: space-around;
-  padding: ${props => props.theme.size.sm};
-  /* background: ${props => rgba(props.theme.colors.black, 0.2)}; */
-  gap: ${props => props.theme.size.sm};
+  flex-direction: column;
 `

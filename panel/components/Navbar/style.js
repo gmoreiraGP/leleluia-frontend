@@ -10,11 +10,8 @@ export const Flex = `
 export const NavWrapper = styled.nav`
   ${Flex};
   flex-direction: column;
-  background: ${props => rgba(props.theme.colors.gray, 0.1)};
-  padding: 0 ${props => props.theme.size.lg};
-  width: 20%;
-  min-width: 20%;
-  max-width: 30%;
+  background: ${props => props.theme.colors.black};
+  width: ${props => (props.sidebarOpen ? '320px' : '80px')};
   height: 100vh;
   position: relative;
 `
@@ -22,50 +19,83 @@ export const NavbarLogo = styled.div`
   ${Flex};
   margin-top: ${props => props.theme.size.md};
 `
-export const NavbarLogoWrapper = styled.div`
-  display: flex;
-  align-items: center;
-`
 
 export const NavLogoTitle = styled.span`
-  margin-left: ${props => props.theme.size.sm};
   color: ${props => props.theme.colors.white};
-  font-size: ${props => props.theme.size.md};
+  font-size: ${props => (props.title ? '15px' : '24px')};
+  margin-left: ${props => props.title && '10px'};
   font-weight: 700;
+  width: 50%;
+`
+export const NavbarTextHeader = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  padding: ${props => props.theme.size.sm};
 `
 
-export const NavbarCloseIcon = styled.div`
-  position: absolute;
-  top: ${props => props.theme.size.sm};
-  right: ${props => props.theme.size.sm};
-  width: 25px;
-  cursor: pointer;
+export const NavbarLinkWrapper = styled.div`
+  width: 100%;
+  height: 100vh;
+  position: relative;
 
-  svg {
-    fill: ${props => props.theme.colors.red};
+  .active {
+    background-color: ${props => props.theme.colors.white};
 
-    &:hover {
-      fill: ${props => props.theme.colors.white};
+    span {
+      color: ${props => props.theme.colors.lightBlack};
     }
   }
-`
-export const NavbarLinkWrapper = styled.div`
-  flex: 1;
 `
 
 export const NavbarLink = styled.a`
   ${Flex};
+  justify-content: start;
+  align-items: center;
   width: 100%;
-  margin-top: ${props => props.theme.size.sm};
-  padding: ${props => props.theme.size.sm} 0;
+  background: ${props => props.theme.colors.lightBlack};
   color: ${props => props.theme.colors.white};
   cursor: pointer;
 
   &:hover {
-    background-color: ${props => rgba(props.theme.colors.black, 0.7)};
+    background-color: ${props => props.theme.colors.black};
+
+    span {
+      color: ${props => props.theme.colors.white};
+    }
   }
+
+  ${props =>
+    props.logout &&
+    `
+    position: absolute;
+    bottom: 0;
+    `};
 `
 
+export const NavbarIcon = styled.span`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: ${props => (props.arrow ? '40px' : '80px')};
+  height: ${props => (props.arrow ? '40px' : '80px')};
+  color: ${props => props.theme.colors.white};
+  border-radius: ${props => props.arrow && '20px'};
+
+  ${props =>
+    props.arrow &&
+    `
+    background: ${props.theme.colors.red};
+    cursor: pointer;
+    
+    &:hover{
+      background: ${props.theme.colors.lightRed};
+    }
+  `};
+`
 export const NavbarText = styled.span`
   margin: 0 ${props => props.theme.size.sm};
+  font-weight: 500;
+  text-transform: uppercase;
 `

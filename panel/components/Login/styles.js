@@ -18,6 +18,10 @@ export const Container = styled.div`
 `
 
 export const Header = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   img {
     margin: 0 auto;
     height: ${props => props.theme.size.xl};
@@ -33,14 +37,12 @@ export const Header = styled.div`
 `
 
 export const Form = styled.form`
-  border-radius: ${props => props.theme.size.sm};
   background: ${props => props.theme.colors.white};
   margin: ${props => props.theme.size.sm};
   padding: ${props => props.theme.size.lg};
 `
 export const WrapperInput = styled.div`
   box-shadow: ${props => props.theme.shadow.sm};
-  border-radius: ${props => props.theme.size.sm};
 `
 export const BoxInput = styled.div`
   position: relative;
@@ -53,11 +55,6 @@ export const Input = styled.input`
   padding: ${props => props.theme.size.sm} ${props => props.theme.size.md};
   color: ${props => props.theme.colors.black};
   background-color: ${props => rgba(props.theme.colors.gray, 0.1)};
-  border-radius: ${props =>
-    props.first
-      ? `${props.theme.size.sm} ${props.theme.size.sm} 0 0`
-      : `0 0 ${props.theme.size.sm} ${props.theme.size.sm}`};
-
   border: 1px solid ${props => props.theme.colors.gray};
 
   ::placeholder {
@@ -193,7 +190,6 @@ export const ButtonSubmit = styled.button`
   gap: ${props => props.theme.size.sm};
   width: 100%;
   border: none;
-  border-radius: ${props => props.theme.size.md};
   font-weight: 600;
   background: ${props => props.theme.colors.red};
   padding: ${props => props.theme.size.sm} ${props => props.theme.size.md};

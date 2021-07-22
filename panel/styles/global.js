@@ -12,8 +12,8 @@ export default createGlobalStyle`
     box-sizing: border-box;
   }
   body {
-    background: ${props => props.theme.colors.black};
-    color: ${props => props.theme.colors.white};
+    background: ${props => props.theme.colors.gray};
+    color: ${props => props.theme.colors.black};
     font: 400 16px Roboto, sans-serif;
     overflow-x: hidden;
   }

@@ -1,10 +1,13 @@
 export default {
   colors: {
-    black: '#121214',
-    white: '#e1e1e6',
-    red: '#96281b',
-    blue: '#30475e',
-    gray: '#bbbfca'
+    red: '#96281B',
+    lightRed: '#B50000',
+    gray: '#EEEBEB',
+    lightGray: '#F4F4F4',
+    black: '#302D2D',
+    lightBlack: '#434343',
+    white: '#FAFAFA',
+    blue: '#30475e'
   },
   size: {
     xsm: '0.5rem',

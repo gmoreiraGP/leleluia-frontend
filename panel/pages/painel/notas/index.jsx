@@ -8,11 +8,13 @@ import {
   TrashIcon
 } from '@heroicons/react/outline'
 import { useMutation, useQuery } from '../../../lib/graphql'
-import Layout from '../../../components/Layout'
-import HeaderMain from '../../../components/HeaderMain'
-import Table from '../../../components/Table'
-import Container from '../../../components/Container'
-import Modal from '../../../components/Modal'
+import Layout from '@/components/Layout'
+import HeaderMain from '@/components/HeaderMain'
+import Table from '@/components/Table'
+import Container from '@/components/Container'
+import Modal from '@/components/Modal'
+import Input from '@/components/Input'
+import Button from '@/components/Button'
 
 const GET_ALL_INVOICES = `
     query{ 
@@ -40,10 +42,12 @@ const Painel = () => {
   const { data, mutate } = useQuery(GET_ALL_INVOICES)
   const [deleteData, deleteUser] = useMutation(DELETE_USER)
   const [openModal, setOpenModal] = useState(false)
+  const [createModal, setCreateModal] = useState(false)
   // const [openModalDelete, setOpenModalDelete] = useState(false)
   // const [openModalView, setOpenModalView] = useState(false)
 
   const handleModal = () => setOpenModal(old => !old)
+  const handleCreateModal = () => setCreateModal(old => !old)
   // const handleDelete = () => setOpenModalDelete(old => !old)
   // const handleView = () => setOpenModalView(old => !old)
 
@@ -58,40 +62,43 @@ const Painel = () => {
       <Container>
         <HeaderMain>
           <HeaderMain.Title>Notas Fiscais</HeaderMain.Title>
-          <Link href='/painel/notas/criar'>
-            <HeaderMain.Link>Criar nota fiscal</HeaderMain.Link>
-          </Link>
+            <HeaderMain.Link onClick={() => handleCreateModal()}>Criar nota fiscal</HeaderMain.Link>
         </HeaderMain>
       
-        <Table head={HEAD} data={data?.getAllInvoices} details={() => handleModal()}>
+        <Table head={HEAD} data={data?.getAllInvoices} details={() => handleModal()} />
 
-        </Table>
         {openModal && (
-                        <Modal close={() => handleModal()}>
-                          <Modal.Header>
-                            <Modal.Icon>
-                              <ExclamationIcon
-                                className='h-6 w-6 text-red-600'
-                                aria-hidden='true'
-                              />
-                            </Modal.Icon>
-                            <Modal.Title>
-                              Nota Fiscal
-                              {/* {invoice.id} */}
-                            </Modal.Title>
-                          </Modal.Header>
-                           {/* <Modal.Box>
-                            <Modal.Button onClick={handleDelete}>
-                              Cancelar
-                            </Modal.Button>
-                            <Modal.Button
-                              $confirm={true}
-                              onClick={remove(invoice.id)}
-                            >
-                              Deletar
-                            </Modal.Button>
-                          </Modal.Box>  */}
-                        </Modal>
+          <Modal close={() => handleModal()}>
+            <Modal.Header>
+              <Modal.Icon>
+                <ExclamationIcon
+                />
+              </Modal.Icon>
+              <Modal.Title>
+                Nota Fiscal
+              </Modal.Title>
+            </Modal.Header>
+          </Modal>
+                      )}
+        {createModal && (
+          <Modal close={() => handleCreateModal()}>
+            <Modal.Header>
+              <Modal.Title>
+               Criar Nota Fiscal
+              </Modal.Title>
+            </Modal.Header>
+            <Modal.Box>
+              <Input type="text" label="Nome" id="name" />
+              <Input type="password" label="Senha" id="password" />
+              <Input type="text" label="Nome" id="name" />
+              <Input type="text" label="Nome" id="name" />
+              <Input type="text" label="Nome" id="name" />
+              <Input type="text" label="Nome" id="name" />
+            </Modal.Box>
+            <Modal.Button>
+              <Button>Salvar</Button>
+            </Modal.Button>
+          </Modal>
                       )}
        {/* <Table>
           <Table.Head>

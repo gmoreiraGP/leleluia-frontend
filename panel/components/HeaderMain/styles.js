@@ -9,19 +9,19 @@ export const Wrapper = styled.div`
 export const HeaderMainTitle = styled.h1`
   font-size: ${props => props.theme.size.lg};
   font-weight: 700;
-  margin-bottom: ${props => props.theme.md};
+  margin: 0 0 ${props => props.theme.size.sm} 0;
 `
 
 export const HeaderMainButton = styled.button``
 
 export const HeaderMainLink = styled.a`
-  background: ${props => rgba(props.theme.colors.gray, 0.2)};
+  background: ${props => props.theme.colors.black};
   padding: ${props => props.theme.size.sm};
-  color: ${props => rgba(props.theme.colors.white, 0.9)};
+  color: ${props => props.theme.colors.white};
   cursor: pointer;
 
   &:hover {
-    background: ${props => rgba(props.theme.colors.black, 0.7)};
-    color: ${props => props.theme.colors.gray};
+    background: ${props => props.theme.colors.gray};
+    color: ${props => props.theme.colors.black};
   }
 `

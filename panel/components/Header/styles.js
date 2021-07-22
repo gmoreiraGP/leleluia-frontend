@@ -5,7 +5,13 @@ export const Wrapper = styled.header`
   position: relative;
   padding: ${props => props.theme.size.sm};
   width: 100%;
-  background: ${props => rgba(props.theme.colors.white, 0.9)};
+  height: 100px;
+  background: ${props => props.theme.colors.red};
+  background: linear-gradient(
+    90deg,
+    ${props => props.theme.colors.red} 0%,
+    ${props => props.theme.colors.lightRed} 100%
+  );
 `
 export const NavWrapperIcon = styled.div`
   position: absolute;
